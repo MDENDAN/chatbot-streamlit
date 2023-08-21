@@ -32,27 +32,27 @@ st.set_page_config(page_title="Amazon Product App")
 
 # Sidebar contents
 with st.sidebar:
-    st.title('Amazon Product Related Queries App 🤗💬')
+    st.title('Amazon Product App 🤖')
     st.markdown('''
     ## About
-    This app is an Review Sentiment Analysis and a LLM-powered chatbot for Amazon Product related queries:
+    This app is a Review Sentiment Analysis and a LLM-powered chatbot for Amazon Product related queries.
     ''')
-    menu = ['Amazon Review Sentiment Analysis','Product Queries BOT']
-    choice  = st.sidebar.selectbox("Select an option", menu)
+    menu = ['Review Sentiment Analysis', 'Product Queries BOT']
+    choice = st.sidebar.selectbox("Select an option", menu)
     add_vertical_space(10)
-    st.write('Made by [Rohit Wahwal](https://github.com/zerothrohit)')
+    st.write('Made by [Md Endan Mollick](https://github.com/MDENDAN)')
 
-st.header("Your Amazon Assistant 💬")
+st.title("Your Amazon Assistant 🛍️")
 st.divider()
 
 def main():
 
-    if choice == 'Amazon Review Sentiment Analysis':
+    if choice == 'Review Sentiment Analysis':
 
-        st.subheader("Amazon Review Sentiment Analysis")
-        with st.form(key='my_form'):
-            raw_text = st.text_area("Enter the amazon review here:")
-            submit_button = st.form_submit_button(label='Submit')
+        st.subheader("Review Sentiment Analysis")
+        with st.form(key='sentiment_form'):
+            raw_text = st.text_area("Enter the Amazon review here:")
+            submit_button = st.form_submit_button(label='Analyze Sentiment')
 
         if submit_button:
             st.info("Sentiment:")
