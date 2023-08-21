@@ -1,6 +1,6 @@
-# Amazon Product Related Queries App 💬
+# Amazon Product ChatBot App.
 
-This app is an Review Sentiment Analysis and a LLM-powered chatbot for Amazon Product related queries.
+This app is deployed on Streamlit. This is sample for deploying Chatbot for product reviews
 
 ## Deployment
 Deployed to [streamlit](https://amaz0n-bot.streamlit.app/)
