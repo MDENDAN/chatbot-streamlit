@@ -28,6 +28,8 @@ def get_sentiment(text):
 load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
+# Retrieve the API token from the environment variables
+huggingfacehub_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 
 # Sidebar contents
@@ -94,7 +96,7 @@ def main():
             
             prompt = PromptTemplate(template=template, input_variables=["question"])
 
-            llm=HuggingFaceHub(repo_id="OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5", model_kwargs={"max_new_tokens":1200})
+            llm=HuggingFaceHub(repo_id="OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5", model_kwargs={"max_new_tokens":1200},huggingfacehub_api_token=huggingfacehub_api_token)
 
             llm_chain=LLMChain(
                 llm=llm,
