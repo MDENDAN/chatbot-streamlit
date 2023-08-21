@@ -28,31 +28,33 @@ def get_sentiment(text):
 load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
+# Retrieve the API token from the environment variables
+huggingfacehub_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 
 # Sidebar contents
 with st.sidebar:
-    st.title('Amazon Product Related Queries App 🤗💬')
+    st.title('Amazon Product App 🤖')
     st.markdown('''
     ## About
-    This app is an Review Sentiment Analysis and a LLM-powered chatbot for Amazon Product related queries:
+    This app is a Review Sentiment Analysis and a LLM-powered chatbot for Amazon Product related queries.
     ''')
-    menu = ['Amazon Review Sentiment Analysis','Product Queries BOT']
-    choice  = st.sidebar.selectbox("Select an option", menu)
+    menu = ['Review Sentiment Analysis', 'Product Queries BOT']
+    choice = st.sidebar.selectbox("Select an option", menu)
     add_vertical_space(10)
-    st.write('Made by [Rohit Wahwal](https://github.com/zerothrohit)')
+    st.write('Made by [Md Endan Mollick](https://github.com/MDENDAN)')
 
-st.header("Your Amazon Assistant 💬")
+st.title("Your Amazon Assistant 🛍️")
 st.divider()
 
 def main():
 
-    if choice == 'Amazon Review Sentiment Analysis':
+    if choice == 'Review Sentiment Analysis':
 
-        st.subheader("Amazon Review Sentiment Analysis")
-        with st.form(key='my_form'):
-            raw_text = st.text_area("Enter the amazon review here:")
-            submit_button = st.form_submit_button(label='Submit')
+        st.subheader("Review Sentiment Analysis")
+        with st.form(key='sentiment_form'):
+            raw_text = st.text_area("Enter the Amazon review here:")
+            submit_button = st.form_submit_button(label='Analyze Sentiment')
 
         if submit_button:
             st.info("Sentiment:")
@@ -94,7 +96,7 @@ def main():
             
             prompt = PromptTemplate(template=template, input_variables=["question"])
 
-            llm=HuggingFaceHub(repo_id="OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5", model_kwargs={"max_new_tokens":1200})
+            llm=HuggingFaceHub(repo_id="OpenAssistant/oasst-sft-4-pythia-12b-epoch-3.5", model_kwargs={"max_new_tokens":1200},huggingfacehub_api_token=huggingfacehub_api_token)
 
             llm_chain=LLMChain(
                 llm=llm,
