@@ -29,7 +29,8 @@ load_dotenv()
 st.set_page_config(page_title="Amazon Product App")
 
 # Retrieve the API token from the environment variables
-huggingfacehub_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+# huggingfacehub_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+huggingfacehub_api_token = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
 
 # Sidebar contents
